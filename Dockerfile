@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 
 RUN chmod +x gradlew
-RUN ./gradlew bootJar -q --no-daemon
+RUN ./gradlew build -q --no-daemon
 
 FROM openjdk:17-jdk-slim
 
