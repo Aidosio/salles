@@ -77,6 +77,14 @@ public class CompanyService {
                 .collect(Collectors.toList());
     }
 
+    public Company getCompanyByOwnerId(UUID ownerId) {
+        return companyRepository.findByOwnerId(ownerId)
+                .orElseThrow(() -> new NotFoundException("Company not found with owner id " + ownerId));
+    }
+
+    public Company getCompanyBySellerId(UUID sellerId) {
+        return companyRepository.findBySellersId(sellerId);
+    }
 
 }
 

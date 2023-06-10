@@ -8,5 +8,9 @@ import java.util.UUID;
 
 public interface CompanyRepo extends JpaRepository<Company, UUID> {
     Optional<Company> findByName(String name);
+
+    Optional<Company> findByOwnerId(UUID ownerId);
+
+    Company findBySellersId(UUID sellerId);
 }
 

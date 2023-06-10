@@ -79,4 +79,17 @@ public class CompanyController {
         Company updatedCompany = companyService.addSellersToCompany(id, sellers);
         return ResponseEntity.ok(updatedCompany);
     }
+
+    @GetMapping("/owner/{ownerId}")
+    public ResponseEntity<Company> getCompanyByOwnerId(@PathVariable UUID ownerId) {
+        Company company = companyService.getCompanyByOwnerId(ownerId);
+        return ResponseEntity.ok(company);
+    }
+
+    @GetMapping("/sellers/{sellerId}")
+    public ResponseEntity<Company> getCompanyBySellerId(@PathVariable UUID sellerId) {
+        Company company = companyService.getCompanyBySellerId(sellerId);
+        return ResponseEntity.ok(company);
+    }
+
 }
