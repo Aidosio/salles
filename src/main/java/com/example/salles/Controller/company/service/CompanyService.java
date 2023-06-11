@@ -86,6 +86,24 @@ public class CompanyService {
         return companyRepository.findBySellersId(sellerId);
     }
 
+    public void deleteUser(UUID id) {
+        User user = getUserById(id);
+        if (user == null) {
+            throw new NotFoundException("User not found with id " + id);
+        }
+
+        List<Company> companies = companyRepository.findAllByOwnerOrSellersContaining(user, user);
+
+        companies.forEach(company -> {
+            company.getOwner().setId(null);
+            company.getSellers().removeIf(seller -> seller.getId().equals(id));
+            companyRepository.save(company);
+        });
+
+        // Удаляем пользователя
+        userRepository.deleteById(id);
+    }
+
 }
 
 

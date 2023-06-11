@@ -92,4 +92,10 @@ public class CompanyController {
         return ResponseEntity.ok(company);
     }
 
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
+        companyService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
