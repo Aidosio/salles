@@ -45,9 +45,8 @@ public class ProductsService {
         return company.getProducts();
     }
 
-    public List<Products> getAllCategoryProductByCompany(UUID companyId, String categoryName) {
-        List<Products> products = getAllProductByCompany(companyId);
-        return products.stream().filter(p -> p.getCategory().equals(categoryName)).toList();
+    public List<Products> getProductsByCompanyAndCategory(UUID companyId, UUID categoryId) {
+        return repo.findByCompany_IdAndCategory_Id(companyId, categoryId);
     }
 
     public Products getByIdProductByCompany(UUID companyId, UUID productId) {

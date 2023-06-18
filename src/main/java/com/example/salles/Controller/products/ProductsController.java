@@ -35,9 +35,12 @@ public class ProductsController {
         return ResponseEntity.ok(service.getProductsById(id));
     }
 
-    @GetMapping("/company/{id}/category/{name}")
-    public ResponseEntity<List<Products>> getProductsByCompany (@PathVariable UUID id, @PathVariable String name) {
-        return ResponseEntity.ok(service.getAllCategoryProductByCompany(id, name));
+    @GetMapping("/{companyId}/{categoryId}")
+    public List<Products> getProductsByCompanyAndCategory(
+            @PathVariable UUID companyId,
+            @PathVariable UUID categoryId
+    ) {
+        return service.getProductsByCompanyAndCategory(companyId, categoryId);
     }
 
     @GetMapping("company/{companyId}/product/{productId}")
