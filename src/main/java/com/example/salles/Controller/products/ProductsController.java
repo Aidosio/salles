@@ -43,7 +43,7 @@ public class ProductsController {
         return service.getProductsByCompanyAndCategory(companyId, categoryId);
     }
 
-    @GetMapping("company/{companyId}/category{categoryName}")
+    @GetMapping("company/{companyId}/category/{categoryName}")
     public List<Products> getProductsByCompanyAndCategory(
             @PathVariable UUID companyId,
             @PathVariable String categoryName
