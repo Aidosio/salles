@@ -49,6 +49,10 @@ public class ProductsService {
         return repo.findByCompany_IdAndCategory_Id(companyId, categoryId);
     }
 
+    public List<Products> getProductsByCompanyAndCategoryByName(UUID companyId, String categoryName) {
+        return repo.findByCompany_IdAndCategory_Name(companyId, categoryName);
+    }
+
     public Products getByIdProductByCompany(UUID companyId, UUID productId) {
         Company company = companyRepo.findById(companyId).orElse(null);
 
