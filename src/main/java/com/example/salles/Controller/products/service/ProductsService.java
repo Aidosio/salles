@@ -91,7 +91,7 @@ public class ProductsService {
         repo.deleteById(id);
     }
 
-    public List<Products> getLatestProductsByCompanyId(UUID companyId, int limit) {
-        return repo.findLatestByCompanyId(companyId, limit);
+    public List<Products> getLatestProductsByCompanyId(UUID companyId) {
+        return repo.findTop4ByCompanyIdOrderByCreatedDateDesc(companyId);
     }
 }

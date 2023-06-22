@@ -74,7 +74,6 @@ public class ProductsController {
 
     @GetMapping("/{companyId}/latest")
     public List<Products> getLatestProductsByCompanyId(@PathVariable UUID companyId) {
-        int limit = 4;
-        return service.getLatestProductsByCompanyId(companyId, limit);
+        return service.getLatestProductsByCompanyId(companyId);
     }
 }
