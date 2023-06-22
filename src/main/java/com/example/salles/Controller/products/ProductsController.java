@@ -72,9 +72,9 @@ public class ProductsController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/latest")
-    public List<Products> getLatestProducts() {
+    @GetMapping("/{companyId}/latest")
+    public List<Products> getLatestProductsByCompanyId(@PathVariable UUID companyId) {
         int limit = 4;
-        return service.getLatestProducts(limit);
+        return service.getLatestProductsByCompanyId(companyId, limit);
     }
 }
