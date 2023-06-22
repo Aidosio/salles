@@ -66,10 +66,15 @@ public class ProductsController {
         return service.updateProduct(productId, updatedProduct);
     }
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProductsByCompany (@PathVariable UUID id) {
         service.deleteById(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/latest")
+    public List<Products> getLatestProducts() {
+        int limit = 4;
+        return service.getLatestProducts(limit);
     }
 }

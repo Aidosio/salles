@@ -10,4 +10,6 @@ public interface ProductsRepo extends JpaRepository<Products, UUID> {
     List<Products> findByCompany_IdAndCategory_Id(UUID companyId, UUID categoryId);
     List<Products> findByCompany_IdAndCategory_Name(UUID companyId, String categoryName);
 
+    List<Products> findTopNByOrderByCreatedDateDesc(int limit);
+
 }

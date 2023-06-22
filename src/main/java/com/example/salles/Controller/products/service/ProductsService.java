@@ -90,4 +90,8 @@ public class ProductsService {
     public void deleteById(UUID id) {
         repo.deleteById(id);
     }
+
+    public List<Products> getLatestProducts(int limit) {
+        return repo.findTopNByOrderByCreatedDateDesc(limit);
+    }
 }
