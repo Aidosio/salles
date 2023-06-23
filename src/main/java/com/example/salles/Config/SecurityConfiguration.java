@@ -22,9 +22,9 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/api/v1/auth/**", "/api/v1/companies/**").permitAll()
                         .requestMatchers(
-                                "/api/v1/companies/**",
+
                                 "/api/v1/category/**",
                                 "/api/v1/product/**",
                                 "/api/v1/user/**",
