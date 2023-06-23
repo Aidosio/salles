@@ -27,6 +27,11 @@ public class SalesController {
         return salesService.createSale(companyId);
     }
 
+    @DeleteMapping("/delete/{saleId}")
+    public void deleteSale(@PathVariable UUID saleId) {
+        salesService.deleteSale(saleId);
+    }
+
     @GetMapping("/get/{saleId}")
     public Purchase getSaleById(@PathVariable UUID saleId) {
         return salesService.getSaleById(saleId);

@@ -63,6 +63,16 @@ public class SalesService {
         throw new IllegalArgumentException("Product not found");
     }
 
+    public void deleteSale(UUID saleId) {
+        Optional<Purchase> saleOptional = purchaseRepository.findById(saleId);
+        if (saleOptional.isPresent()) {
+            Purchase sale = saleOptional.get();
+            purchaseRepository.delete(sale);
+        } else {
+            throw new IllegalArgumentException("Sale not found");
+        }
+    }
+
     public Purchase removeProductFromSale(UUID saleId, UUID productId) {
         Purchase sale = getSaleById(saleId);
         List<PurchaseItem> items = sale.getProductIds();
