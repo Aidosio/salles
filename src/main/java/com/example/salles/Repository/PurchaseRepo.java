@@ -5,8 +5,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface PurchaseRepo extends JpaRepository<Purchase, UUID> {
     Page<Purchase> findTop4ByOrderByCreateDateDesc(Pageable pageable);
+
+    List<Purchase> findByCompanyId(UUID companyId);
 }

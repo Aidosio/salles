@@ -51,6 +51,12 @@ public class SalesController {
         return salesService.addProductToSale(saleId, productId, quantity);
     }
 
+
+    @GetMapping("/{companyId}")
+    public List<Purchase> getPurchasesByCompanyId(@PathVariable UUID companyId) {
+        return salesService.getPurchasesByCompanyId(companyId);
+    }
+
     @PutMapping("/remove-product/{saleId}")
     public Purchase removeProductFromSale(
             @PathVariable UUID saleId,
