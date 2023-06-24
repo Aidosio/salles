@@ -76,23 +76,19 @@ public class ProductsService {
         return repo.save(existingProduct);
     }
 
-    public Products getProductById(UUID productId) {
-        return repo.findById(productId).orElse(null);
-    }
-
     public Products updateProduct(UUID productId, Products updatedProduct) {
         Optional<Products> existingProductOptional = repo.findById(productId);
-            Products existingProduct = existingProductOptional.get();
-            existingProduct.setName(updatedProduct.getName());
-            existingProduct.setPrice(updatedProduct.getPrice());
-            existingProduct.setBarcode(updatedProduct.getBarcode());
-            existingProduct.setCount(updatedProduct.getCount());
+        Products existingProduct = existingProductOptional.get();
+        existingProduct.setName(updatedProduct.getName());
+        existingProduct.setPrice(updatedProduct.getPrice());
+        existingProduct.setBarcode(updatedProduct.getBarcode());
+        existingProduct.setCount(updatedProduct.getCount());
 
-            String categoryName = updatedProduct.getCategory().getName();
-            CategoryList category = categoryRepo.findByName(categoryName);
-            existingProduct.setCategory(category);
+        String categoryName = updatedProduct.getCategory().getName();
+        CategoryList category = categoryRepo.findByName(categoryName);
+        existingProduct.setCategory(category);
 
-            return repo.save(existingProduct);
+        return repo.save(existingProduct);
     }
 
     public void deleteById(UUID id) {
