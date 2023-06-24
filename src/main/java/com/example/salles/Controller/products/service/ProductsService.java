@@ -95,6 +95,9 @@
             return repo.findByBarcode(barcode);
         }
 
+        public Products getProductsByIds(UUID id) {
+            return repo.findById(id).orElseThrow();
+        }
 
         public void deleteById(UUID id) {
             repo.deleteById(id);

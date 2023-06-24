@@ -77,10 +77,9 @@ public class ProductsController {
     }
 
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteProductsByCompany (@PathVariable UUID id) {
-        service.deleteById(id);
-        return ResponseEntity.ok().build();
+    @DeleteMapping("/ids/{id}")
+    public ResponseEntity<Products> getProductsByIds(@PathVariable UUID id) {
+        return ResponseEntity.ok(service.getProductsByIds(id));
     }
 
     @GetMapping("/{companyId}/latest")
