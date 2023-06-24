@@ -63,6 +63,10 @@ public class ProductsService {
                 .orElse(null);
     }
 
+    public Products getById(UUID productId) {
+        return repo.findById(productId).orElseThrow();
+    }
+
     public Products updateProductByCompany(UUID companyId, UUID productId, Products updatedProduct) {
         Products existingProduct = getByIdProductByCompany(companyId, productId);
         existingProduct.setName(updatedProduct.getName());
