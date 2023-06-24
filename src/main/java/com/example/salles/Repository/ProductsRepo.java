@@ -13,4 +13,5 @@ public interface ProductsRepo extends JpaRepository<Products, UUID> {
 
     List<Products> findTop4ByCompanyIdOrderByCreatedDateDesc(UUID companyId);
 
+    Products findByBarcode(String barcode);
 }

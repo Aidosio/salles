@@ -71,6 +71,12 @@ public class ProductsController {
         return service.updateProduct(productId, updatedProduct);
     }
 
+    @GetMapping("/barcode/{barcode}")
+    public ResponseEntity<Products> getProductByBarcode(@PathVariable String barcode) {
+        return ResponseEntity.ok(service.getProductByBarcode(barcode));
+    }
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProductsByCompany (@PathVariable UUID id) {
         service.deleteById(id);
