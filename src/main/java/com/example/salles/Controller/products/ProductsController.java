@@ -56,11 +56,6 @@ public class ProductsController {
         return ResponseEntity.ok(service.getByIdProductByCompany(companyId, productId));
     }
 
-    @GetMapping("/{productId}")
-    public ResponseEntity<Products> getProductsByIdByCompany (@PathVariable UUID productId) {
-        return ResponseEntity.ok(service.getById(productId));
-    }
-
     @PutMapping("company/{companyId}/product/{productId}")
     public ResponseEntity<Products> updateProductByCompany (@PathVariable UUID companyId, @PathVariable UUID productId, @RequestBody Products products) {
         return ResponseEntity.ok(service.updateProductByCompany(companyId, productId, products));
@@ -71,15 +66,10 @@ public class ProductsController {
         return service.updateProduct(productId, updatedProduct);
     }
 
-    @GetMapping("/barcode/{barcode}")
-    public ResponseEntity<Products> getProductByBarcode(@PathVariable String barcode) {
-        return ResponseEntity.ok(service.getProductByBarcode(barcode));
-    }
-
-
-    @DeleteMapping("/ids/{id}")
-    public ResponseEntity<Products> getProductsByIds(@PathVariable UUID id) {
-        return ResponseEntity.ok(service.getProductsByIds(id));
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProductsByCompany (@PathVariable UUID id) {
+        service.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{companyId}/latest")
