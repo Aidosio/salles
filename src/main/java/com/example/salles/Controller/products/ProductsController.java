@@ -4,6 +4,7 @@ package com.example.salles.Controller.products;
 import com.example.salles.Controller.products.service.ProductsService;
 import com.example.salles.Entity.Products;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,9 +57,15 @@ public class ProductsController {
         return ResponseEntity.ok(service.getByIdProductByCompany(companyId, productId));
     }
 
-    @GetMapping("/{productId}")
-    public ResponseEntity<Products> getProductsByIdByCompany (@PathVariable UUID productId) {
-        return ResponseEntity.ok(service.getById(productId));
+//    @GetMapping("/{productId}")
+//    public ResponseEntity<Products> getProductsByIdByCompany (@PathVariable UUID productId) {
+//        return ResponseEntity.ok(service.getById(productId));
+//    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Products> getProductById(@PathVariable UUID id) {
+        Products product = service.getProductById(id);
+        return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
     @PutMapping("company/{companyId}/product/{productId}")

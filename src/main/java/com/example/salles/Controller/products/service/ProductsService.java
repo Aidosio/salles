@@ -76,6 +76,10 @@ public class ProductsService {
         return repo.save(existingProduct);
     }
 
+    public Products getProductById(UUID productId) {
+        return repo.findById(productId).orElse(null);
+    }
+
     public Products updateProduct(UUID productId, Products updatedProduct) {
         Optional<Products> existingProductOptional = repo.findById(productId);
             Products existingProduct = existingProductOptional.get();
