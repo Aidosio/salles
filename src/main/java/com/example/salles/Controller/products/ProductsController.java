@@ -65,7 +65,7 @@ public class ProductsController {
     @GetMapping("/{id}")
     public ResponseEntity<Products> getProductById(@PathVariable UUID id) {
         Products product = service.getProductById(id);
-        return new ResponseEntity<>(product, HttpStatus.OK);
+        return ResponseEntity.ok(product);
     }
 
     @PutMapping("company/{companyId}/product/{productId}")
