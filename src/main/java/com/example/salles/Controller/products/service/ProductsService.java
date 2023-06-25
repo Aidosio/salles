@@ -91,6 +91,10 @@ public class ProductsService {
         repo.deleteById(id);
     }
 
+    public Products getProductByBarcode(String barcode) {
+        return repo.findByBarcode(barcode);
+    }
+
     public List<Products> getLatestProductsByCompanyId(UUID companyId) {
         return repo.findTop4ByCompanyIdOrderByCreatedDateDesc(companyId);
     }

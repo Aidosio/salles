@@ -51,6 +51,11 @@ public class ProductsController {
         return service.getProductsByCompanyAndCategoryByName(companyId, categoryName);
     }
 
+    @GetMapping("/barcode/{barcode}")
+    public ResponseEntity<Products> getProductByBarcode(@PathVariable String barcode) {
+        return ResponseEntity.ok(service.getProductByBarcode(barcode));
+    }
+
     @GetMapping("company/{companyId}/product/{productId}")
     public ResponseEntity<Products> getProductsByIdByCompany (@PathVariable UUID companyId, @PathVariable UUID productId) {
         return ResponseEntity.ok(service.getByIdProductByCompany(companyId, productId));
